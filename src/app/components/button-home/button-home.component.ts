@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core'
 })
 export class ButtonHomeComponent {
   @Input() text: string = ''
+  @Input() secondText: string = ''
 }
