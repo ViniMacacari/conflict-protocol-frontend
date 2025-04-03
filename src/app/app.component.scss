@@ -1,7 +1,9 @@
 .content {
+    position: relative;
     min-height: 100vh;
 
-    // background-color: #030303 !important;
+    overflow-x: hidden;
+
     background-image: url('/backgrounds/background.png');
     background-size: cover;
     background-repeat: no-repeat;
