@@ -17,6 +17,16 @@
     overflow-x: hidden;
     box-sizing: border-box;
 
+    .icons {
+        color: #adfffd !important;
+    }
+
+    .terminal-back {
+        color: #adfffd !important;
+        font-family: 'VT323' !important;
+        font-size: 1.2em;
+    }
+
     .terminal-text {
         white-space: pre-wrap;
         word-break: break-word;

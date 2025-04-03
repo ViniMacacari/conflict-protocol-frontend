@@ -3,6 +3,10 @@
     <h2 class="subtitle text-center px-5">Entenda as regras do jogo!</h2>
 
     <div class="terminal-container mt-4" #terminal>
+        <div (click)="navigate('')" class="d-flex align-items-center justify-content-center pointer">
+            <i class="fa-sharp fa-solid fa-left-long icons"></i>
+            <p class="mb-0 terminal-back mx-2">Voltar</p>
+        </div>
         <pre class="terminal-text">{{displayedText}}</pre>
     </div>
 </div>

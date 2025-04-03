@@ -1,4 +1,5 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core'
+import { Component, ElementRef, ViewChild } from '@angular/core'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-rules',
@@ -14,18 +15,28 @@ export class RulesComponent {
 
   @ViewChild('terminal', { static: false }) terminalRef!: ElementRef
 
+  constructor(
+    private router: Router
+  ) { }
+
   fullText = `
 # Regras do Conflict Protocol
 
-1. Cada jogador escolhe um personagem único:
-  - Hacker Ético
-  - DBA
-  - Project Manager
-  - Backend
+Este jogo pode ser jogado em até 4 pessoas.
+
+1. Um personagem será sorteado para cada jogador via dado d-4 ou pelo site, os personagens são:
+- Hacker Ético
+- DBA
+- Project Manager
+- Backend
 
 2. O objetivo é conquistar 4 insígnias escondidas pelo tabuleiro.
+- A insignía não gera vantagem competitiva
+- Quando o jogador é derrotado o oponente obtem as insígnias
 
 3. As batalhas ocorrem por turnos, usando habilidades exclusivas de cada personagem.
+- Enquanto dois jogadores batalham os outros podem, no mesmo ciclo de jogo, andar pelo mapa
+- Um jogador pode abandonar a batalha 
 
 4. É permitido formar alianças temporárias, mas trair é parte do jogo.
 
@@ -58,5 +69,9 @@ export class RulesComponent {
         clearInterval(interval)
       }
     }, speed)
+  }
+
+  navigate(url: string): void {
+    this.router.navigate([url])
   }
 }

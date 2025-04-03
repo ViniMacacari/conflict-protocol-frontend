@@ -54,8 +54,14 @@ p {
     font-size: 1.5em !important;
 
     @media (max-width: 768px) {
-        font-size: 1.3em !important;
+        font-size: 1.2em !important;
     }
+}
+
+// Actions
+
+.pointer {
+    cursor: pointer;
 }
 
 // Elements
