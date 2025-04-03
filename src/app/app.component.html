@@ -1,3 +1,7 @@
-<div [@routeAnimations]="prepareRoute(outlet)" class="content">
-  <router-outlet #outlet="outlet"></router-outlet>
+<div class="page-wrapper">
+  <div class="page-anim-container">
+    <div [@routeAnimations]="prepareRoute(outlet)" class="page-anim">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+  </div>
 </div>

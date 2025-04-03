@@ -1,10 +1,21 @@
-.content {
+.page-wrapper {
     position: relative;
     min-height: 100vh;
-
     overflow-x: hidden;
-
     background-image: url('/backgrounds/background.png');
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.page-anim-container {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.page-anim {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    will-change: transform, opacity;
 }
