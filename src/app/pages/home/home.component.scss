@@ -32,7 +32,8 @@
     align-items: center;
     justify-content: flex-end;
     padding: 10px;
-    background: linear-gradient(135deg, #321b38, #260432);
+    background: linear-gradient(135deg, rgba(98, 53, 109, 0.2), rgba(94, 17, 122, 0.2));
+    backdrop-filter: blur(3px);
     border-radius: 15px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     height: calc(var(--folder-H) * 1.7);
@@ -128,7 +129,7 @@
 }
 
 .custom-file-upload:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(210, 133, 239, 0.4);
 }
 
 .custom-file-upload input[type="file"] {
