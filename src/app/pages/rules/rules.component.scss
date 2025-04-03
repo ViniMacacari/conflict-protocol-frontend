@@ -1,0 +1,39 @@
+.terminal-container {
+    width: 100%;
+    max-width: 900px;
+    background: #0d0d0d;
+    border-radius: 12px;
+    border: 1px solid #5f1c73;
+    padding: 24px;
+    margin: 2rem auto;
+    box-shadow: 0 0 20px rgba(95, 28, 115, 0.3);
+    color: #adfffd;
+    font-size: 16px;
+    line-height: 1.6;
+
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+    box-sizing: border-box;
+
+    .terminal-text {
+        white-space: pre-wrap;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        overflow-x: hidden;
+        width: 100%;
+        box-sizing: border-box;
+
+        font-family: 'VT323' !important;
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .terminal-container {
+        font-size: 1em;
+        padding: 16px;
+        margin: 1.5rem 1rem;
+    }
+}
