@@ -107,4 +107,18 @@ export class WaitingRoomComponent {
       console.error(error)
     }
   }
+
+  async closeRoom(): Promise<void> {
+    try {
+      await this.request.post('/room/close', {
+        roomCode: this.roomCode,
+        userId: this.userId
+      })
+
+      this.streamSource?.close()
+      this.router.navigate([''])
+    } catch (error: any) {
+      console.error(error)
+    }
+  }
 }
