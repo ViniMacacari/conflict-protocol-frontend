@@ -37,12 +37,14 @@ export class NewRoomComponent {
         time: this.time
       })
 
+      const userId = await this.request.get('/users/visitor/' + this.userName)
+
       this.room.setRoom(result.roomCode)
 
       this.router.navigate(['/sala-espera'], {
         queryParams: {
           room: result.roomCode,
-          user: this.userName
+          user: userId.userId
         }
       })
     } catch (error: any) {
