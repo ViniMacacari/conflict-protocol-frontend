@@ -6,6 +6,7 @@
     </div>
 
     <app-button *ngIf="roomCreator" class="mb-3" [text]="'Cancelar'"></app-button>
+    <app-button *ngIf="!roomCreator" class="mb-3" [text]="'Sair'"></app-button>
 
     <div class="players">
         <div class="player" *ngFor="let char of characters"
