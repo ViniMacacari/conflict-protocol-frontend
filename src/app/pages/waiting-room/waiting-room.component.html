@@ -2,6 +2,8 @@
     <h1 class="title mt-2">Aguardando início</h1>
     <h2 class="subtitle text-center px-5 mb-5">Sala [{{roomCode}}] aguardando jogadores...</h2>
 
+    <p>Tempo de espera: {{ seconds }} segundos</p>
+
     <div class="players">
         <div class="player" *ngFor="let char of characters"
             [ngClass]="[char.slug, getPlayerNameByCharacter(char.nome) !== 'Aguardando...' ? 'active' : '']">

@@ -17,6 +17,8 @@ export class WaitingRoomComponent {
   roomCode: string = ''
   playerName: string = ''
 
+  seconds: number = 0
+
   players: any[] = []
   characters = [
     { nome: 'Hacker Ético', slug: 'hacker', id: 1 },
@@ -42,6 +44,10 @@ export class WaitingRoomComponent {
     setTimeout(() => {
       this.waitPlayers()
     })
+
+    setInterval(() => {
+      this.seconds++
+    }, 1000)
   }
 
   getPlayerNameByCharacter(characterName: string): string {
