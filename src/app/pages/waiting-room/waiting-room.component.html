@@ -1,8 +1,11 @@
 <div class="d-flex align-items-center justify-content-center pt-4 flex-column">
     <h1 class="title mt-2">Aguardando início</h1>
-    <h2 class="subtitle text-center px-5 mb-5">Sala [{{roomCode}}] aguardando jogadores...</h2>
+    <div class="d-flex align-items-center justify-content-center gap-1">
+        <h2 class="subtitle text-center">Sala [{{roomCode}}] aguardando jogadores...</h2>
+        <h2 class="subtitle text-center mb-2">({{ seconds}}s)</h2>
+    </div>
 
-    <p>Tempo de espera: {{ seconds }} segundos</p>
+    <app-button class="mb-3" [text]="'Cancelar'"></app-button>
 
     <div class="players">
         <div class="player" *ngFor="let char of characters"

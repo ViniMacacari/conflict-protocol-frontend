@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common'
 import { Router, ActivatedRoute } from '@angular/router'
 import { LoaderComponent } from "../../components/loader/loader.component"
 import { RequestService } from '../../services/request/request.service'
-import { ActiveRoomService } from '../../services/room/active-room.service'
+import { ButtonComponent } from "../../components/button/button.component"
 
 @Component({
   selector: 'app-waiting-room',
   standalone: true,
-  imports: [CommonModule, LoaderComponent],
+  imports: [CommonModule, LoaderComponent, ButtonComponent],
   templateUrl: './waiting-room.component.html',
   styleUrl: './waiting-room.component.scss'
 })
@@ -65,19 +65,32 @@ export class WaitingRoomComponent {
   async waitPlayers(): Promise<void> {
     this.loader = true
 
-    this.streamSource = this.request.stream(
-      '/users/rooms/' + this.roomCode,
-      (data) => {
-        this.players = data
-        this.cdr.detectChanges()
+    try {
+      this.streamSource = this.request.stream(
+        '/users/rooms/' + this.roomCode,
+        (data) => {
+          this.players = data
+          this.cdr.detectChanges()
 
-        if (this.players.length >= 4) {
+          if (this.players.length >= 4) {
+            this.streamSource?.close()
+            this.loader = false
+            this.router.navigate(['sala', this.roomCode])
+          }
+
+          if (this.players.length == 0) {
+            this.router.navigate([''])
+          }
+        }, () => { }, (errorMessage: string) => {
           this.streamSource?.close()
-          this.loader = false
-          this.router.navigate(['sala', this.roomCode])
+          console.error('Erro no stream:', errorMessage)
+          this.router.navigate([''])
         }
-      }
-    )
+      )
+    } catch (error: any) {
+      this.router.navigate([''])
+      console.error(error)
+    }
   }
 
   async validateUser(): Promise<void> {

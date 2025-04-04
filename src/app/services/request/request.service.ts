@@ -36,7 +36,12 @@ export class RequestService {
     }
   }
 
-  stream(route: string, onData: (data: any) => void, onClose?: () => void): EventSource {
+  stream(
+    route: string,
+    onData: (data: any) => void,
+    onClose?: () => void,
+    onError?: (errorMessage: string) => void
+  ): EventSource {
     const source = new EventSource(`${this.baseUrl}${route}`)
 
     source.onmessage = (event) => {
@@ -55,9 +60,17 @@ export class RequestService {
       })
     }
 
+    if (onError) {
+      source.addEventListener('error', (event: MessageEvent) => {
+        source.close()
+        onError(event.data || 'Erro desconhecido')
+      })
+    }
+
     source.onerror = (error) => {
-      console.error('Erro no stream:', error)
+      console.error('Erro de conexão com o stream:', error)
       source.close()
+      if (onError) onError('Erro na conexão com o servidor.')
     }
 
     return source
