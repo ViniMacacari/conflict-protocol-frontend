@@ -5,7 +5,7 @@
         <h2 class="subtitle text-center mb-3">({{ seconds}}s)</h2>
     </div>
 
-    <app-button *ngIf="roomCreator" class="mb-3" [text]="'Cancelar'"></app-button>
+    <app-button (click)="closeRoom()" *ngIf="roomCreator" class="mb-3" [text]="'Cancelar'"></app-button>
     <app-button *ngIf="!roomCreator" class="mb-3" [text]="'Sair'"></app-button>
 
     <div class="players">
@@ -22,4 +22,4 @@
     </div>
 </div>
 
-<app-loader [text]="'teste'" [open]="loader"></app-loader>
+<app-loader [text]="'Obtendo informações...'" [open]="loader"></app-loader>

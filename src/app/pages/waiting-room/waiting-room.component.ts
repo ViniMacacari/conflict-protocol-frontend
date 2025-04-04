@@ -115,15 +115,17 @@ export class WaitingRoomComponent {
 
   async closeRoom(): Promise<void> {
     try {
+      this.loader = true
       await this.request.post('/room/close', {
         roomCode: this.roomCode,
         userId: this.userId
       })
-
-      this.streamSource?.close()
-      this.router.navigate([''])
     } catch (error: any) {
       console.error(error)
+    } finally {
+      this.loader = false
+      this.streamSource?.close()
+      this.router.navigate([''])
     }
   }
 
