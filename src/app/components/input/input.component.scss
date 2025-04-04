@@ -1,3 +1,7 @@
+:host {
+    margin: 20px 0px;
+}
+
 .grid {
     height: 800px;
     width: 800px;
@@ -14,14 +18,13 @@
 .border,
 .darkBorderBg,
 .glow {
-    max-height: 70px;
+    max-height: 50px;
     max-width: 314px;
     height: 100%;
     width: 100%;
     position: absolute;
     overflow: hidden;
     z-index: -1;
-    /* Border Radius */
     border-radius: 12px;
     filter: blur(3px);
 }
@@ -29,13 +32,13 @@
 .input {
     background-color: #010201;
     border: none;
-    /* padding:7px; */
     width: 301px;
     height: 56px;
     border-radius: 10px;
     color: white;
     padding-inline: 59px;
-    font-size: 18px;
+    font-size: 1em;
+    font-family: 'Knight';
 }
 
 .poda {
@@ -45,7 +48,7 @@
 }
 
 .input::placeholder {
-    color: #c0b9c0;
+    color: #968896;
 }
 
 .input:focus {
@@ -61,7 +64,6 @@
     width: 100px;
     height: 20px;
     position: absolute;
-    background: linear-gradient(90deg, transparent, black);
     top: 18px;
     left: 70px;
 }
@@ -130,8 +132,8 @@
     left: 50%;
     transform: translate(-50%, -50%) rotate(70deg);
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 300px;
+    height: 300px;
     filter: brightness(1.3);
     background-repeat: no-repeat;
     background-position: 0 0;
@@ -158,8 +160,8 @@
     left: 50%;
     transform: translate(-50%, -50%) rotate(82deg);
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 300px;
+    height: 300px;
     background-repeat: no-repeat;
     background-position: 0 0;
     background-image: conic-gradient(rgba(0, 0, 0, 0),
@@ -225,9 +227,9 @@
 
 .glow {
     overflow: hidden;
-    filter: blur(30px);
+    filter: blur(40px);
     opacity: 0.4;
-    max-height: 130px;
+    max-height: 40px;
     max-width: 354px;
 }
 
@@ -344,4 +346,8 @@
     position: absolute;
     left: 20px;
     top: 15px;
+}
+
+.label {
+    color: #af7dc0 !important;
 }

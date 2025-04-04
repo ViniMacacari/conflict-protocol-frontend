@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms'
   styleUrl: './input.component.scss'
 })
 export class InputComponent {
-  @Input() message: string = ''
+  @Input() label: string = ''
   @Input() placeholder: string = 'Seu texto...'
   @Input() icon: string = 'fa-magnifying-glass'
   @Input() model: string = ''
