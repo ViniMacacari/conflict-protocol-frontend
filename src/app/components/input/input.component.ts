@@ -14,5 +14,6 @@ export class InputComponent {
   @Input() placeholder: string = 'Seu texto...'
   @Input() icon: string = 'fa-magnifying-glass'
   @Input() model: string = ''
+  @Input() type: string = 'text'
   @Output() modelChange = new EventEmitter<string>()
 }

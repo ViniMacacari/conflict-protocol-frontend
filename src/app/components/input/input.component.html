@@ -11,7 +11,7 @@
 
     <div class="main">
         <input placeholder="{{ placeholder }}" [(ngModel)]="model" (ngModelChange)="modelChange.emit($event)"
-            autocorrect="off" autocapitalize="off" spellcheck="false" type="text" name="text" class="input" />
+            autocorrect="off" autocapitalize="off" spellcheck="false" type="{{ type }}" name="text" class="input" />
         <div class="input-mask"></div>
         <div class="pink-mask"></div>
         <div class="search-icon">
