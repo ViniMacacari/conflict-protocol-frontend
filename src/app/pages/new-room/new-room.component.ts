@@ -44,7 +44,8 @@ export class NewRoomComponent {
       this.router.navigate(['/sala-espera'], {
         queryParams: {
           room: result.roomCode,
-          user: userId.userId
+          visitorId: userId.userId,
+          visitorName: this.userName
         }
       })
     } catch (error: any) {
