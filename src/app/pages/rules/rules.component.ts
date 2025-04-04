@@ -60,7 +60,7 @@ Este jogo pode ser jogado em até 4 pessoas.
   }
 
   typeText(): void {
-    const speed = 15
+    const speed = 7
     const interval = setInterval(() => {
       if (this.index < this.fullText.length) {
         this.displayedText += this.fullText.charAt(this.index)

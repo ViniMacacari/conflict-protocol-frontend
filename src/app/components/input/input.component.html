@@ -1,1 +1,21 @@
-<p>input works!</p>
+<div class="poda">
+    <div class="glow"></div>
+    <div class="darkBorderBg"></div>
+    <div class="darkBorderBg"></div>
+    <div class="darkBorderBg"></div>
+
+    <div class="white"></div>
+
+    <div class="border"></div>
+
+    <div class="main">
+        <input placeholder="{{ placeholder }}" [(ngModel)]="model" (ngModelChange)="modelChange.emit($event)"
+            autocorrect="off" autocapitalize="off" spellcheck="false" type="text" name="text" class="input" />
+        <div class="input-mask"></div>
+        <div class="pink-mask"></div>
+        <div class="search-icon">
+            <i class="fa-duotone fa-solid {{ icon }}"
+                style="--fa-primary-color: #c2c2c2; --fa-secondary-color: #ffffff;"></i>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,7 @@
      <h1 class="title text-center mt-2">Conflict Protocol</h1>
      <h2 class="subtitle text-center px-5">Domine o código. Conquiste o protocolo</h2>
      <div class="d-flex align-items-center justify-content-center p-5 gap-3 flex-wrap">
-          <app-button-home [text]="'CRIAR UMA PARTIDA'"></app-button-home>
+          <app-button-home (click)="navigate('nova-sala')" [text]="'CRIAR UMA PARTIDA'"></app-button-home>
           <app-button-home [text]="'ENCONTAR UMA SALA'"></app-button-home>
      </div>
 
