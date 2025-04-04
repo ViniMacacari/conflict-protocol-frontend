@@ -28,6 +28,7 @@ export class WaitingRoomComponent {
   private streamSource: EventSource | null = null
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private request: RequestService,
     private cdr: ChangeDetectorRef
@@ -57,13 +58,11 @@ export class WaitingRoomComponent {
       (data) => {
         this.players = data
         this.cdr.detectChanges()
-        console.log('Jogadores na sala:', this.players)
-        console.log('teste')
 
         if (this.players.length >= 4) {
           this.streamSource?.close()
           this.loader = false
-          console.log('Sala cheia. Partida pronta!')
+          this.router.navigate(['sala', this.roomCode])
         }
       }
     )

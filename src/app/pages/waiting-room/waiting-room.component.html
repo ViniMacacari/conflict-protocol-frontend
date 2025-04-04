@@ -3,7 +3,8 @@
     <h2 class="subtitle text-center px-5 mb-5">Sala [{{roomCode}}] aguardando jogadores...</h2>
 
     <div class="players">
-        <div class="player" *ngFor="let char of characters" [ngClass]="char.slug">
+        <div class="player" *ngFor="let char of characters"
+            [ngClass]="[char.slug, getPlayerNameByCharacter(char.nome) !== 'Aguardando...' ? 'active' : '']">
             <div class="body">
                 <h2>{{ char.nome }}</h2>
                 <img [src]="'/characters/' + char.slug + '.png'" height="150px">

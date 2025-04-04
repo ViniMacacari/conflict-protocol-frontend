@@ -10,6 +10,8 @@
     gap: 30px;
 
     .player {
+        position: relative;
+
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -17,6 +19,13 @@
         width: 220px;
 
         border-radius: 15px;
+
+        overflow: hidden;
+        transition: 0.7s ease-in-out;
+
+        &.active {
+            box-shadow: 10px 10px 67px -35px rgba(240,22,240,1);
+        }
 
         .body {
             display: flex;
