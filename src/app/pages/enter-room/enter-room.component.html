@@ -1,0 +1,13 @@
+<div class="d-flex align-items-center justify-content-center pt-4 flex-column">
+    <h1 class="title mt-2">Encontrar uma partida</h1>
+    <h2 class="subtitle text-center px-5 mb-5">Se junte aos seus amigos!</h2>
+
+    <app-input [label]="'CÓDIGO'" [placeholder]="'SEU APELIDO'" [icon]="'fa-user'"
+        [(model)]="userName"></app-input>
+    <app-input [label]="'NOME DA SALA'" [placeholder]="'Minha super sala'" [icon]="'fa-game-board'"
+        [(model)]="roomCode"></app-input>
+
+    <app-button (click)="enterRoom()" class="my-5" [text]="'Entrar'"></app-button>
+</div>
+
+<app-loader [text]="'Entrando...'" [open]="loader"></app-loader>
