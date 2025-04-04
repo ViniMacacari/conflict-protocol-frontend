@@ -1,0 +1,16 @@
+<div *ngIf="domElement" class="modal fade" tabindex="-1" [ngClass]="{ 'show': animation, 'fade-out': !animation }"
+    style="display: flex" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="w-100">
+                    <div class="loader">
+                        <div class="light"></div>
+                        <div class="black_overlay"></div>
+                    </div>
+                </div>
+                <p class="my-0 mt-3 blue">{{ text }}</p>
+            </div>
+        </div>
+    </div>
+</div>
