@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, ChangeDetectorRef } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { Router, ActivatedRoute } from '@angular/router'
 import { LoaderComponent } from "../../components/loader/loader.component"
@@ -17,9 +17,55 @@ export class WaitingRoomComponent {
   roomCode: string = ''
   playerName: string = ''
 
-  constructor(private route: ActivatedRoute) {
+  players: any[] = []
+  characters = [
+    { nome: 'Hacker Ético', slug: 'hacker', id: 1 },
+    { nome: 'DBA', slug: 'dba', id: 2 },
+    { nome: 'Project Manager', slug: 'project-manager', id: 3 },
+    { nome: 'Eng. DevOps', slug: 'backend', id: 4 }
+  ]
+
+  private streamSource: EventSource | null = null
+
+  constructor(
+    private route: ActivatedRoute,
+    private request: RequestService,
+    private cdr: ChangeDetectorRef
+  ) {
     this.route.queryParams.subscribe(params => {
       this.roomCode = params['room']
     })
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.waitPlayers()
+    })
+  }
+
+  getPlayerNameByCharacter(characterName: string): string {
+    const found = this.players.find(p => p.personagem === characterName)
+
+    return found?.nome_usuario || 'Aguardando...'
+  }
+
+  async waitPlayers(): Promise<void> {
+    this.loader = true
+
+    this.streamSource = this.request.stream(
+      '/users/rooms/' + this.roomCode,
+      (data) => {
+        this.players = data
+        this.cdr.detectChanges()
+        console.log('Jogadores na sala:', this.players)
+        console.log('teste')
+
+        if (this.players.length >= 4) {
+          this.streamSource?.close()
+          this.loader = false
+          console.log('Sala cheia. Partida pronta!')
+        }
+      }
+    )
   }
 }

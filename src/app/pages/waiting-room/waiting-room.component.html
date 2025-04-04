@@ -3,40 +3,13 @@
     <h2 class="subtitle text-center px-5 mb-5">Sala [{{roomCode}}] aguardando jogadores...</h2>
 
     <div class="players">
-        <div class="player hacker">
+        <div class="player" *ngFor="let char of characters" [ngClass]="char.slug">
             <div class="body">
-                <h2>Hacker Ético</h2>
-                <img src="/characters/hacker.png" height="150px">
+                <h2>{{ char.nome }}</h2>
+                <img [src]="'/characters/' + char.slug + '.png'" height="150px">
             </div>
             <div class="player-name">
-                <p>Jogador 1</p>
-            </div>
-        </div>
-        <div class="player hacker">
-            <div class="body">
-                <h2>DBA</h2>
-                <img src="/characters/dba.png" height="150px">
-            </div>
-            <div class="player-name">
-                <p>Jogador 2</p>
-            </div>
-        </div>
-        <div class="player hacker">
-            <div class="body">
-                <h2>Project Manager</h2>
-                <img src="/characters/project-manager.png" height="150px">
-            </div>
-            <div class="player-name">
-                <p>Jogador 3</p>
-            </div>
-        </div>
-        <div class="player hacker">
-            <div class="body">
-                <h2>Backend</h2>
-                <img src="/characters/backend.png" height="150px">
-            </div>
-            <div class="player-name">
-                <p>Jogador 4</p>
+                <p>{{ getPlayerNameByCharacter(char.nome) }}</p>
             </div>
         </div>
     </div>

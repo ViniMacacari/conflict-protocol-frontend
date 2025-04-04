@@ -36,6 +36,33 @@ export class RequestService {
     }
   }
 
+  stream(route: string, onData: (data: any) => void, onClose?: () => void): EventSource {
+    const source = new EventSource(`${this.baseUrl}${route}`)
+
+    source.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data)
+        onData(data)
+      } catch (e) {
+        console.error('Erro ao processar dados do stream:', e)
+      }
+    }
+
+    if (onClose) {
+      source.addEventListener('close', () => {
+        source.close()
+        onClose()
+      })
+    }
+
+    source.onerror = (error) => {
+      console.error('Erro no stream:', error)
+      source.close()
+    }
+
+    return source
+  }
+
   private handlePromiseError(error: HttpErrorResponse): any {
     const errorMessage = this.extractErrorMessage(error)
     console.error('Erro capturado no serviço (Promise):', errorMessage)
