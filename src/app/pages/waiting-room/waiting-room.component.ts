@@ -22,6 +22,8 @@ export class WaitingRoomComponent {
   userId: number = 0
   username: string = ''
 
+  roomCreator: boolean = false
+
   players: any[] = []
   characters = [
     { nome: 'Hacker Ético', slug: 'hacker', id: 1 },
@@ -45,11 +47,14 @@ export class WaitingRoomComponent {
     })
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
+  async ngAfterViewInit(): Promise<void> {
+    setTimeout(async () => {
+      this.loader = true
+      await this.validateUser()
+      await this.validateRoomCreator()
       this.waitPlayers()
-      this.validateUser()
-    })
+      this.loader = false
+    }, 600)
 
     setInterval(() => {
       this.seconds++
@@ -117,6 +122,23 @@ export class WaitingRoomComponent {
 
       this.streamSource?.close()
       this.router.navigate([''])
+    } catch (error: any) {
+      console.error(error)
+    }
+  }
+
+  async validateRoomCreator(): Promise<void> {
+    try {
+      const result = await this.request.post('/room/validate', {
+        roomCode: this.roomCode,
+        userId: this.userId
+      })
+
+      if (result.result === true) {
+        this.roomCreator = true
+      } else {
+        this.roomCreator = false
+      }
     } catch (error: any) {
       console.error(error)
     }
