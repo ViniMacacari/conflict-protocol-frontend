@@ -6,7 +6,7 @@ import { lastValueFrom } from 'rxjs'
   providedIn: 'root'
 })
 export class RequestService {
-  private baseUrl = 'http://localhost:47953'
+  private baseUrl = 'http://localhost:4000'
 
   constructor(private http: HttpClient) { }
 

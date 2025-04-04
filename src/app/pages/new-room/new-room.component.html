@@ -2,9 +2,12 @@
     <h1 class="title mt-2">Crie uma partida</h1>
     <h2 class="subtitle text-center px-5 mb-5">Reuna seus amigos!</h2>
 
-    <app-input [label]="'CRIADOR DA SALA'" [placeholder]="'SEU APELIDO'" [icon]="'fa-user'"></app-input>
-    <app-input [label]="'NOME DA SALA'" [placeholder]="'Minha super sala'" [icon]="'fa-game-board'"></app-input>
-    <app-input [label]="'TEMPO POR RODADA (SEGUNDOS)'" [type]="'number'" [placeholder]="'60'" [icon]="'fa-hourglass-end'"></app-input>
+    <app-input [label]="'CRIADOR DA SALA'" [placeholder]="'SEU APELIDO'" [icon]="'fa-user'"
+        [(model)]="userName"></app-input>
+    <app-input [label]="'NOME DA SALA'" [placeholder]="'Minha super sala'" [icon]="'fa-game-board'"
+        [(model)]="roomName"></app-input>
+    <app-input [label]="'TEMPO POR RODADA (SEGUNDOS)'" [type]="'number'" [placeholder]="'60'"
+        [icon]="'fa-hourglass-end'" [(model)]="time"></app-input>
 
-    <app-button class="my-5" [text]="'Criar'"></app-button>
+    <app-button (click)="newRoom()" class="my-5" [text]="'Criar'"></app-button>
 </div>
