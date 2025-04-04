@@ -19,6 +19,9 @@ export class WaitingRoomComponent {
 
   seconds: number = 0
 
+  userId: number = 0
+  username: string = ''
+
   players: any[] = []
   characters = [
     { nome: 'Hacker Ético', slug: 'hacker', id: 1 },
@@ -36,13 +39,16 @@ export class WaitingRoomComponent {
     private cdr: ChangeDetectorRef
   ) {
     this.route.queryParams.subscribe(params => {
-      this.roomCode = params['room']
+      this.roomCode = params['room'],
+        this.userId = params['visitorId'],
+        this.username = params['visitorName']
     })
   }
 
   ngAfterViewInit() {
     setTimeout(() => {
       this.waitPlayers()
+      this.validateUser()
     })
 
     setInterval(() => {
@@ -72,5 +78,20 @@ export class WaitingRoomComponent {
         }
       }
     )
+  }
+
+  async validateUser(): Promise<void> {
+    try {
+      const user = await this.request.post('/users/visitor-validator', {
+        username: this.username,
+        id: this.userId
+      })
+
+      if (!user.userId) {
+        this.router.navigate([''])
+      }
+    } catch (error: any) {
+      console.error(error)
+    }
   }
 }
