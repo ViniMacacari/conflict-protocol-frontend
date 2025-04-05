@@ -26,6 +26,29 @@ export class EnterRoomComponent {
   loader: boolean = false
 
   async enterRoom(): Promise<void> {
+    this.loader = true
 
+    try {
+      await this.request.post('/room/enter', {
+        roomCode: this.roomCode,
+        user: this.userName
+      })
+
+      const userId = await this.request.post('/users/visitor-management', {
+        username: this.userName
+      })
+
+      this.router.navigate(['/sala-espera'], {
+        queryParams: {
+          room: this.roomCode,
+          visitorId: userId.userId,
+          visitorName: this.userName
+        }
+      })
+    } catch (error: any) {
+      console.error(error)
+    } finally {
+      this.loader = false
+    }
   }
 }
