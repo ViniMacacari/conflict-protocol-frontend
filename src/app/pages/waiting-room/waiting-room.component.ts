@@ -80,7 +80,13 @@ export class WaitingRoomComponent {
           if (this.players.length >= 4) {
             this.streamSource?.close()
             this.loader = false
-            this.router.navigate(['sala', this.roomCode])
+            this.router.navigate(['sala', this.roomCode, {
+              queryParams: {
+                room: this.roomCode,
+                visitorId: this.userId,
+                visitorName: this.username
+              }
+            }])
           }
 
           if (this.players.length == 0) {
@@ -117,6 +123,22 @@ export class WaitingRoomComponent {
     try {
       this.loader = true
       await this.request.post('/room/close', {
+        roomCode: this.roomCode,
+        userId: this.userId
+      })
+    } catch (error: any) {
+      console.error(error)
+    } finally {
+      this.loader = false
+      this.streamSource?.close()
+      this.router.navigate([''])
+    }
+  }
+
+  async exitRoom(): Promise<void> {
+    try {
+      this.loader = true
+      await this.request.post('/room/exit', {
         roomCode: this.roomCode,
         userId: this.userId
       })
