@@ -20,29 +20,58 @@ export class RulesComponent {
   ) { }
 
   fullText = `
-# Regras do Conflict Protocol
+1. Introdução
+Conflict Protocol é um jogo de tabuleiro competitivo inspirado em RPGs de mesa, ambientado no mundo da tecnologia e desenvolvimento de software. Os jogadores controlam personagens em um combate por turnos, com o objetivo de coletar insígnias espalhadas pelo mapa e levá-las até o altar.
 
-Este jogo pode ser jogado em até 4 pessoas.
+2. Componentes do Jogo
+A caixa do jogo contém:
+- 1 Tabuleiro com o mapa de Conflict Protocol
+- 4 Peões representando os personagens jogáveis
+- Cartas de Habilidade (decks únicos por personagem, com diferentes tipos de dano)
+- Cartas de Buff
+- Cartas de Insígnias
 
-1. Um personagem será sorteado para cada jogador via dado d-4 ou pelo site, os personagens são:
-- Hacker Ético
-- DBA
-- Project Manager
-- Backend
+Importante: O jogo não acompanha dados físicos. Em vez disso, a caixa traz um QR Code que leva a este site do Conflict Protocol. Aqui, você encontrará:
+- Todas as regras atualizadas
+- Separação de rodadas e turnos
+- Um rolador virtual de dados (D2 até D20)
 
-2. O objetivo é conquistar 4 insígnias escondidas pelo tabuleiro.
-- A insignía não gera vantagem competitiva
-- Quando o jogador é derrotado o oponente obtem as insígnias
+3. Criação de Personagens
+Os jogadores escolhem entre 4 personagens pré-criados, inspirados em cargos do mercado de desenvolvimento de software. Cada personagem possui habilidades e cartas próprias, e um valor fixo de movimentação por turno.
 
-3. As batalhas ocorrem por turnos, usando habilidades exclusivas de cada personagem.
-- Enquanto dois jogadores batalham os outros podem, no mesmo ciclo de jogo, andar pelo mapa
-- Um jogador pode abandonar a batalha 
+4. Mecânica do Jogo
+- Iniciativa: Todos rolam um D20 no início da partida para definir a ordem dos turnos.
+- Movimentação: Cada personagem tem um número fixo de casas que pode andar por turno.
+- Buffs: Estão posicionados no mapa. Ao chegar a uma casa de buff, o jogador rola um D4 para sortear qual buff receberá (vida, ataque, defesa ou movimentação).
+- Combate: Ocorre quando dois jogadores estão a duas casas de distância. Se pelo menos um quiser lutar, o combate inicia. Para atacar, rola-se um D20:
+- Acerta se o valor for maior que a Defesa (CA) do inimigo
+- 20: acerto crítico (dano dobrado)
+- 1: erro crítico (sofre o próprio dano da carta)
+- Fugir do Combate (rolagem de D20):
+- 1 a 5: Não foge e perde uma insígnia
+- 6 a 10: Não foge e mantém as insígnias
+- 11 a 15: Foge, mas perde uma insígnia
+- 16 a 20: Foge e mantém as insígnias
 
-4. É permitido formar alianças temporárias, mas trair é parte do jogo.
+5. Morte e Reviver
+Quando um jogador atinge 0 de vida, entra em Modo Vegetativo e tem 3 turnos para tentar reviver.
+- Rola D20 no início de cada turno. Se tirar 19 ou 20, revive com metade da vida base.
+- Se falhar nas 3 tentativas, é eliminado da partida.
 
-5. O primeiro jogador a coletar todas as insígnias e vencer o último desafio finaliza o jogo.
+6. Objetivo e Condições de Vitória
+- Vencer levando as 4 insígnias até o altar no mapa.
+- Ou sendo o último jogador vivo.
+Duração média da partida: 20 a 50 minutos (pode variar).
 
-6. A estratégia, lógica e conhecimento de programação são essenciais para vencer.
+7. Estratégia e Interações
+- Jogadores podem lutar, evitar combates ou negociar livremente durante seus turnos.
+- Ao derrotar outro jogador, recebe suas insígnias e buffs.
+
+8. Recursos Online
+Use o QR Code incluso na caixa para acessar o site oficial, onde você encontrará:
+- Regras atualizadas
+- Rolador de dados digitais (D2 a D20)
+- Medidor de Vida
 `
 
   ngAfterViewInit(): void {
@@ -60,7 +89,7 @@ Este jogo pode ser jogado em até 4 pessoas.
   }
 
   typeText(): void {
-    const speed = 7
+    const speed = 1
     const interval = setInterval(() => {
       if (this.index < this.fullText.length) {
         this.displayedText += this.fullText.charAt(this.index)
