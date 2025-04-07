@@ -3,22 +3,29 @@ import { CommonModule } from '@angular/common'
 import { ActivatedRoute } from '@angular/router'
 import { RequestService } from '../../services/request/request.service'
 import { ProgressBarComponent } from "../../components/progress-bar/progress-bar.component"
+import { LoaderComponent } from "../../components/loader/loader.component";
+import { ButtonComponent } from "../../components/button/button.component";
+import { InputComponent } from "../../components/input/input.component";
 
 @Component({
   selector: 'app-room',
   standalone: true,
-  imports: [CommonModule, ProgressBarComponent],
+  imports: [CommonModule, ProgressBarComponent, LoaderComponent, ButtonComponent, InputComponent],
   templateUrl: './room.component.html',
   styleUrl: './room.component.scss'
 })
 export class RoomComponent {
-  loader: boolean = false
+  loader: boolean = true
   roomCode: string = ''
   currentPlayerName: string = ''
   currentPlayerCharacter: string = ''
   remainingTime: number = 0
   userId: number = 0
   character: string = ''
+
+  diceNum: string = ''
+
+  isPlayer: boolean = false
 
   characters = [
     { nome: 'Hacker Ético', slug: 'hacker', id: 1 },
@@ -42,30 +49,34 @@ export class RoomComponent {
   }
 
   ngAfterViewInit(): void {
-    this.streamSource = this.request.stream(
-      '/turn/' + this.roomCode + '?userId=' + this.userId,
-      (data) => {
+    setTimeout(() => {
+      this.streamSource = this.request.stream(
+        '/turn/' + this.roomCode + '?userId=' + this.userId,
+        (data) => {
+          this.character = data.personagem
+          this.currentPlayerName = data.nome_jogador
 
-        this.character = data.personagem
-        this.currentPlayerName = data.nome_jogador
+          const character = this.characters.find(c => c.nome === data.personagem)
+          this.currentPlayerCharacter = character?.slug || ''
 
-        const character = this.characters.find(c => c.nome === data.personagem)
-        this.currentPlayerCharacter = character?.slug || ''
+          if (data.id_jogador_atual !== this.lastPlayerId) {
+            this.remainingTime = 0
+            this.cdr.detectChanges()
+            this.remainingTime = data.tempo_restante
+            this.lastPlayerId = data.id_jogador_atual
+          }
 
-        if (data.id_jogador_atual !== this.lastPlayerId) {
-          this.remainingTime = 0
+          this.isPlayer = data.id_jogador_atual == this.userId
+
           this.cdr.detectChanges()
-          this.remainingTime = data.tempo_restante
-          this.lastPlayerId = data.id_jogador_atual
+          this.loader = false
+        },
+        undefined,
+        (err) => {
+          console.error('Erro no stream do turno:', err)
         }
-
-        this.cdr.detectChanges()
-      },
-      undefined,
-      (err) => {
-        console.error('Erro no stream do turno:', err)
-      }
-    )
+      )
+    }, 100)
   }
 
   ngOnDestroy(): void {
