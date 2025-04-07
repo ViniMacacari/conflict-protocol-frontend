@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, ViewChild } from '@angular/core'
+import { Component, ChangeDetectorRef, ViewChild, NgZone } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ActivatedRoute } from '@angular/router'
 import { RequestService } from '../../services/request/request.service'
@@ -23,6 +23,8 @@ export class RoomComponent {
   userId: number = 0
   character: string = ''
 
+  next: boolean = false
+
   diceNum: number = 0
   dice: boolean = false
 
@@ -43,7 +45,8 @@ export class RoomComponent {
   constructor(
     private route: ActivatedRoute,
     private request: RequestService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone
   ) {
     this.route.queryParams.subscribe(params => {
       this.roomCode = params['room'],
@@ -62,6 +65,8 @@ export class RoomComponent {
           const character = this.characters.find(c => c.nome === data.personagem)
           this.currentPlayerCharacter = character?.slug || ''
 
+          const playerChanged = data.id_jogador_atual !== this.lastPlayerId
+
           if (data.id_jogador_atual !== this.lastPlayerId) {
             this.remainingTime = 0
             this.cdr.detectChanges()
@@ -72,7 +77,11 @@ export class RoomComponent {
           this.isPlayer = data.id_jogador_atual == this.userId
 
           this.cdr.detectChanges()
-          this.loader = false
+
+          if (!this.next && playerChanged) {
+            this.next = false
+            this.zone.run(() => this.loader = false)
+          }
         },
         undefined,
         (err) => {
@@ -85,6 +94,7 @@ export class RoomComponent {
   async nextTurn(): Promise<void> {
     try {
       this.loader = true
+      this.next = true
 
       await this.request.post('/turn/next', {
         roomId: this.roomCode
@@ -95,9 +105,9 @@ export class RoomComponent {
       this.remainingTime = 0
       this.cdr.detectChanges()
     } catch (error: any) {
-
+      console.error('Erro ao avançar turno:', error)
     } finally {
-      this.loader = false
+      this.next = false
     }
   }
 
