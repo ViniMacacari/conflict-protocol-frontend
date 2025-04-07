@@ -1,5 +1,5 @@
-import { Component } from '@angular/core'
-import { Router } from '@angular/router'
+import { Component, ChangeDetectorRef } from '@angular/core'
+import { Router, ActivatedRoute } from '@angular/router'
 import { InputComponent } from "../../components/input/input.component"
 import { ButtonComponent } from "../../components/button/button.component"
 import { LoaderComponent } from "../../components/loader/loader.component"
@@ -15,13 +15,21 @@ import { ActiveRoomService } from '../../services/room/active-room.service'
 })
 export class EnterRoomComponent {
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private request: RequestService,
-    private room: ActiveRoomService,
-    private router: Router
-  ) { }
+    private cdr: ChangeDetectorRef
+  ) {
+    this.route.queryParams.subscribe(params => {
+      this.roomCode = params['room'],
+        this.userId = params['visitorId'],
+        this.userName = params['visitorName']
+    })
+  }
 
   roomCode: string = ''
   userName: string = ''
+  userId: number = 0
 
   loader: boolean = false
 
@@ -30,7 +38,7 @@ export class EnterRoomComponent {
 
     try {
       await this.request.post('/room/enter', {
-        roomCode: this.roomCode,
+        roomCode: Number(this.roomCode),
         user: this.userName
       })
 
@@ -47,6 +55,7 @@ export class EnterRoomComponent {
       })
     } catch (error: any) {
       alert(error.erro)
+
       console.error(error)
     } finally {
       this.loader = false

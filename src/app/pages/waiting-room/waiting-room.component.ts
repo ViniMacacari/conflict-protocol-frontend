@@ -80,13 +80,13 @@ export class WaitingRoomComponent {
           if (this.players.length >= 4) {
             this.streamSource?.close()
             this.loader = false
-            this.router.navigate(['sala', this.roomCode, {
+            this.router.navigate(['sala', this.roomCode], {
               queryParams: {
                 room: this.roomCode,
                 visitorId: this.userId,
                 visitorName: this.username
               }
-            }])
+            })
           }
 
           if (this.players.length == 0) {

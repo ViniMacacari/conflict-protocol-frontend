@@ -10,7 +10,7 @@
     <div class="border"></div>
 
     <div class="main">
-        <input placeholder="{{ placeholder }}" [(ngModel)]="model" (ngModelChange)="modelChange.emit($event)"
+        <input placeholder="{{ placeholder }}" [(ngModel)]="model" (ngModelChange)="onInputChange($event)"
             autocorrect="off" autocapitalize="off" spellcheck="false" type="{{ type }}" name="text" class="input" />
         <div class="input-mask"></div>
         <div class="pink-mask"></div>

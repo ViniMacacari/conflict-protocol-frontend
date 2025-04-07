@@ -16,4 +16,10 @@ export class InputComponent {
   @Input() model: string = ''
   @Input() type: string = 'text'
   @Output() modelChange = new EventEmitter<string>()
+
+  onInputChange(value: string): void {
+    const lowercased = value.toLowerCase()
+    this.model = lowercased
+    this.modelChange.emit(lowercased)
+  }
 }
