@@ -1,15 +1,16 @@
-import { Component, ChangeDetectorRef } from '@angular/core'
+import { Component, ChangeDetectorRef, ViewChild } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ActivatedRoute } from '@angular/router'
 import { RequestService } from '../../services/request/request.service'
 import { ProgressBarComponent } from "../../components/progress-bar/progress-bar.component"
 import { LoaderComponent } from "../../components/loader/loader.component"
 import { ButtonComponent } from "../../components/button/button.component"
+import { DiceDialogComponent } from "../../components/dice-dialog/dice-dialog.component"
 
 @Component({
   selector: 'app-room',
   standalone: true,
-  imports: [CommonModule, ProgressBarComponent, LoaderComponent, ButtonComponent],
+  imports: [CommonModule, ProgressBarComponent, LoaderComponent, ButtonComponent, DiceDialogComponent],
   templateUrl: './room.component.html',
   styleUrl: './room.component.scss'
 })
@@ -22,9 +23,12 @@ export class RoomComponent {
   userId: number = 0
   character: string = ''
 
-  diceNum: string = ''
+  diceNum: number = 0
+  dice: boolean = false
 
   isPlayer: boolean = false
+
+  @ViewChild(DiceDialogComponent) diceDialog!: DiceDialogComponent
 
   characters = [
     { nome: 'Hacker Ético', slug: 'hacker', id: 1 },
@@ -80,5 +84,10 @@ export class RoomComponent {
 
   ngOnDestroy(): void {
     this.streamSource?.close()
+  }
+
+  rollDice(number: number) {
+    this.diceNum = number
+    this.diceDialog.openDice()
   }
 }
