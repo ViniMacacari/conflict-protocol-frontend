@@ -2,7 +2,7 @@
     <h1 class="title-1 mt-2">Jogador da rodada [{{roomCode}}]:</h1>
     <app-progress-bar *ngIf="currentPlayerName && currentPlayerCharacter"
         [durationInSeconds]="remainingTime"></app-progress-bar>
-    <app-button *ngIf="this.isPlayer" class="my-2" [text]="'Próximo'"></app-button>
+    <app-button (click)="nextTurn()" *ngIf="this.isPlayer" class="my-2" [text]="'Próximo'"></app-button>
 
     <div class="players" *ngIf="currentPlayerName && currentPlayerCharacter">
         <div class="player me-3">

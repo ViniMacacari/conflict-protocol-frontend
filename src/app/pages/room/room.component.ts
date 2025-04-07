@@ -82,6 +82,25 @@ export class RoomComponent {
     }, 100)
   }
 
+  async nextTurn(): Promise<void> {
+    try {
+      this.loader = true
+
+      await this.request.post('/turn/next', {
+        roomId: this.roomCode
+      })
+
+      this.remainingTime = 0
+      this.cdr.detectChanges()
+      this.remainingTime = 0
+      this.cdr.detectChanges()
+    } catch (error: any) {
+
+    } finally {
+      this.loader = false
+    }
+  }
+
   ngOnDestroy(): void {
     this.streamSource?.close()
   }
