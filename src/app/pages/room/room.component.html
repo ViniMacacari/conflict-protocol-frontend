@@ -17,15 +17,34 @@
 
         <div *ngIf="this.isPlayer" class="match-data">
             <h2>Simular dados</h2>
-            <div class="dice">
-                <app-input [label]="'Quantidade de lados'" [type]="'number'" [placeholder]="'20'" [icon]="'fa-dice'"
-                    [(model)]="diceNum"></app-input>
-                <div class="div">
-                    <button>Jogar</button>
+            <div class="dice d-flex gap-2">
+                <div class="dices">
+                    <p class="mb-0">D4</p>
+                    <i class="fa-duotone fa-solid fa-dice-d4 icons-duo"></i>
+                </div>
+                <div class="dices">
+                    <p class="mb-0">D6</p>
+                    <i class="fa-duotone fa-solid fa-dice-d6 icons-duo"></i>
+                </div>
+                <div class="dices">
+                    <p class="mb-0">D8</p>
+                    <i class="fa-duotone fa-solid fa-dice-d8 icons-duo"></i>
+                </div>
+                <div class="dices">
+                    <p class="mb-0">D10</p>
+                    <i class="fa-duotone fa-solid fa-dice-d10 icons-duo"></i>
+                </div>
+                <div class="dices">
+                    <p class="mb-0">D12</p>
+                    <i class="fa-duotone fa-solid fa-dice-d12 icons-duo"></i>
+                </div>
+                <div class="dices">
+                    <p class="mb-0">D20</p>
+                    <i class="fa-duotone fa-solid fa-dice-d20 icons-duo"></i>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<app-loader [open]="loader" [text]="'Buscando informações...'"></app-loader>
+<app-loader [open]=" loader" [text]="'Buscando informações...'"></app-loader>

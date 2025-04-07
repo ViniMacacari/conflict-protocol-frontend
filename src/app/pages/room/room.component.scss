@@ -95,3 +95,23 @@
         box-shadow: 10px 1px 63px -10px rgba(240, 91, 240, 1);
     }
 }
+
+.icons-duo {
+    font-size: 26px;
+}
+
+.dices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+
+    width: 45px;
+    height: 65px;
+
+    border-radius: 10px;
+    background-color: #1d0224;
+
+    cursor: pointer;
+}

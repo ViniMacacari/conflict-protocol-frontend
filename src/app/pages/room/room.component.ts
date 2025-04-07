@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common'
 import { ActivatedRoute } from '@angular/router'
 import { RequestService } from '../../services/request/request.service'
 import { ProgressBarComponent } from "../../components/progress-bar/progress-bar.component"
-import { LoaderComponent } from "../../components/loader/loader.component";
-import { ButtonComponent } from "../../components/button/button.component";
-import { InputComponent } from "../../components/input/input.component";
+import { LoaderComponent } from "../../components/loader/loader.component"
+import { ButtonComponent } from "../../components/button/button.component"
 
 @Component({
   selector: 'app-room',
   standalone: true,
-  imports: [CommonModule, ProgressBarComponent, LoaderComponent, ButtonComponent, InputComponent],
+  imports: [CommonModule, ProgressBarComponent, LoaderComponent, ButtonComponent],
   templateUrl: './room.component.html',
   styleUrl: './room.component.scss'
 })
