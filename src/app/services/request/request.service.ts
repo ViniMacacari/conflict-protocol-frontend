@@ -6,7 +6,7 @@ import { lastValueFrom } from 'rxjs'
   providedIn: 'root'
 })
 export class RequestService {
-  private baseUrl = 'http://194.163.182.80:4000'
+  private baseUrl = 'https://api.adoremus.com.br:4001'
 
   constructor(private http: HttpClient) { }
 
