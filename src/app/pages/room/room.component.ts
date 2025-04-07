@@ -56,9 +56,7 @@ export class RoomComponent {
           this.remainingTime = 0
           this.cdr.detectChanges()
           this.remainingTime = data.tempo_restante
-          console.log(this.remainingTime)
           this.lastPlayerId = data.id_jogador_atual
-          console.log('Novo jogador:', this.currentPlayerName)
         }
 
         this.cdr.detectChanges()
