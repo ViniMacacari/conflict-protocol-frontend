@@ -46,6 +46,7 @@ export class EnterRoomComponent {
         }
       })
     } catch (error: any) {
+      alert(error.erro)
       console.error(error)
     } finally {
       this.loader = false
