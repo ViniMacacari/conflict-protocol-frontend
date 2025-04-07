@@ -31,9 +31,7 @@
 
 .real-button {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(35px);
     width: 120px;
     height: 60px;
     z-index: 1;
