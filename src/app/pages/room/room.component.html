@@ -2,8 +2,8 @@
     <h1 class="title mt-2">Sala {{roomCode}}</h1>
 
     <app-progress-bar *ngIf="currentPlayerName && currentPlayerCharacter" [durationInSeconds]="remainingTime"></app-progress-bar>
-
     <div class="players" *ngIf="currentPlayerName && currentPlayerCharacter">
+        <h2>Jogador da rodada:</h2>
         <div class="player">
             <div class="body">
                 <h2>{{ character }}</h2>
