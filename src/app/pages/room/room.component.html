@@ -1,14 +1,16 @@
 <div class="d-flex align-items-center justify-content-center pt-4 flex-column">
     <h1 class="title mt-2">Sala {{roomCode}}</h1>
 
-    <div *ngIf="currentPlayerName && currentPlayerCharacter" class="turn-info">
-        <div class="player-box">
-            <img [src]="'/characters/' + currentPlayerCharacter + '.png'" [alt]="currentPlayerCharacter"
-                class="avatar" />
+    <app-progress-bar *ngIf="currentPlayerName && currentPlayerCharacter" [durationInSeconds]="remainingTime"></app-progress-bar>
 
-            <div class="player-data">
-                <p class="player-name">{{ currentPlayerName }}</p>
-                <p class="player-timer">{{ remainingTime }}s</p>
+    <div class="players" *ngIf="currentPlayerName && currentPlayerCharacter">
+        <div class="player">
+            <div class="body">
+                <h2>{{ character }}</h2>
+                <img [src]="'/characters/' + currentPlayerCharacter + '.png'" height="150px">
+            </div>
+            <div class="player-name">
+                <p>{{ currentPlayerName }}</p>
             </div>
         </div>
     </div>

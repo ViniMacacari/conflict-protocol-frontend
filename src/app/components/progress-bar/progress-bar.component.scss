@@ -2,11 +2,15 @@
     display: block;
     width: 100%;
     max-width: 600px;
+
+    @media (max-width: 600px) {
+        width: 100%;
+        max-width: 200px;
+    }
 }
 
 .progress-container {
     width: 100%;
-    min-width: 600px;
     height: 12px;
     background-color: #1a1a1a;
     border-radius: 10px;
@@ -15,10 +19,9 @@
 }
 
 .progress-fill {
-    display: block;
     height: 100%;
     width: 0%;
     background: linear-gradient(90deg, #d34dff, #4c0c6d);
-    transition: width 0.1s linear;
     border-radius: 10px;
+    transition: width 0.03s linear;
 }

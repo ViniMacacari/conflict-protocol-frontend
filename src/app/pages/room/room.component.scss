@@ -1,32 +1,62 @@
-.turn-display {
-    text-align: center;
-    margin-top: 2rem;
-}
-
-.player-info {
+.players {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 1rem;
-}
+    flex-wrap: wrap;
 
-.avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    border: 2px solid white;
-}
+    width: 80%;
+    max-width: 600px;
 
-.info {
-    text-align: left;
-}
+    padding: 10px;
+    gap: 30px;
 
-.player-name {
-    font-weight: bold;
-    font-size: 1.2rem;
-}
+    .player {
+        position: relative;
 
-.timer {
-    color: #888;
-    font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        width: 220px;
+
+        border-radius: 15px;
+
+        overflow: hidden;
+        transition: 0.7s ease-in-out;
+
+        &.active {
+            box-shadow: 10px 10px 67px -35px rgba(240, 22, 240, 1);
+        }
+
+        .body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            padding: 0px 15px;
+            padding-top: 10px;
+
+            border-radius: 15px 15px 0 0;
+            background-color: #240430;
+
+            h2 {
+                font-size: 1.1em !important;
+            }
+        }
+
+        .player-name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 0 0 15px 15px;
+            background-color: #170220;
+
+            height: 40px;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
 }
