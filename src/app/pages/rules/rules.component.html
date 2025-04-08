@@ -2,10 +2,15 @@
     <h1 class="title text-center mt-2">Conflict Protocol</h1>
     <h2 class="subtitle text-center px-5">Entenda as regras do jogo!</h2>
 
-    <div class="terminal-container mt-4" #terminal>
+    <div class="terminal-container mt-4 mb-2" #terminal>
         <div (click)="navigate('')" class="d-flex align-items-center justify-content-center pointer">
             <i class="fa-sharp fa-solid fa-left-long icons"></i>
             <p class="mb-0 terminal-back mx-2">Voltar</p>
+        </div>
+        <div (click)="externalNavigate('https://github.com/ViniMacacari/conflict-protocol-frontend')"
+            class="d-flex align-items-center justify-content-center pointer">
+            <i class="fa-brands fa-square-github icons"></i>
+            <p class="mb-0 terminal-back mx-2">Código fonte</p>
         </div>
         <pre class="terminal-text">{{displayedText}}</pre>
     </div>

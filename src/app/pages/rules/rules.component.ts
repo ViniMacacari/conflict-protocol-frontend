@@ -72,6 +72,8 @@ Use o QR Code incluso na caixa para acessar o site oficial, onde você encontrar
 - Regras atualizadas
 - Rolador de dados digitais (D2 a D20)
 - Medidor de Vida
+
+9. Criado por: Hugo, Leonardo, Vidal e Vinícius
 `
 
   ngAfterViewInit(): void {
@@ -102,5 +104,9 @@ Use o QR Code incluso na caixa para acessar o site oficial, onde você encontrar
 
   navigate(url: string): void {
     this.router.navigate([url])
+  }
+
+  externalNavigate(url: string): void {
+    window.open(url, '_blank')
   }
 }
