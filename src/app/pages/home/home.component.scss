@@ -48,6 +48,12 @@
     position: relative;
 
     min-width: --folder-W !important;
+
+    @media screen and (max-width: 768px) {
+        --folder-W: 180px;
+        --folder-H: 110px;
+
+    }
 }
 
 .folder {
@@ -56,6 +62,11 @@
     left: calc(50% - 120px);
     animation: float 2.5s infinite ease-in-out;
     transition: transform var(--transition) ease;
+
+    @media (max-width: 768px) {
+        top: -10px;
+        left: calc(50% - 90px);
+    }
 }
 
 .folder:hover {
@@ -110,6 +121,12 @@
     position: absolute;
     top: -10px;
     z-index: 2;
+
+    @media (max-width: 768px) {
+        width: 100px;
+        height: 25px;
+        top: -5px;
+    }
 }
 
 .folder .cover {
