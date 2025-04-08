@@ -1,0 +1,13 @@
+<div *ngIf="domElement" class="modal fade" tabindex="-1" [ngClass]="{ 'show': animation, 'fade-out': !animation }"
+    style="display: flex" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <i class="fa-duotone fa-solid fa-dice-d{{ number }} icons-duo"></i>
+                <p>Regras:</p>
+                <pre class="terminal-text">{{fullText}}</pre>
+                <app-button [text]="'Fechar'" (click)="close()"></app-button>
+            </div>
+        </div>
+    </div>
+</div>

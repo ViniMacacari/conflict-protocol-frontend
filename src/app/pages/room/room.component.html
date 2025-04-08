@@ -1,5 +1,8 @@
 <div class="d-flex align-items-center justify-content-center pt-4 flex-column">
-    <h1 class="title-1 mt-2">Jogador da rodada [{{roomCode}}]:</h1>
+    <div class="d-flex align-items-center justify-content-center flex-row gap-2">
+        <i class="fa-solid fa-circle-question icons pointer" (click)="helpDialog.openHelp()"></i>
+        <h1 class="title-1 mt-2">Jogador da rodada [{{roomCode}}]:</h1>
+    </div>
     <app-progress-bar *ngIf="currentPlayerName && currentPlayerCharacter"
         [durationInSeconds]="remainingTime"></app-progress-bar>
     <app-button (click)="nextTurn()" *ngIf="this.isPlayer" class="my-2" [text]="'Próximo'"></app-button>
@@ -49,3 +52,4 @@
 
 <app-loader [open]=" loader" [text]="'Buscando informações...'"></app-loader>
 <app-dice-dialog [number]="diceNum"></app-dice-dialog>
+<app-help-dialog></app-help-dialog>

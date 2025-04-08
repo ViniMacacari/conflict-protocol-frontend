@@ -6,11 +6,12 @@ import { ProgressBarComponent } from "../../components/progress-bar/progress-bar
 import { LoaderComponent } from "../../components/loader/loader.component"
 import { ButtonComponent } from "../../components/button/button.component"
 import { DiceDialogComponent } from "../../components/dice-dialog/dice-dialog.component"
+import { HelpDialogComponent } from "../../components/help-dialog/help-dialog.component";
 
 @Component({
   selector: 'app-room',
   standalone: true,
-  imports: [CommonModule, ProgressBarComponent, LoaderComponent, ButtonComponent, DiceDialogComponent],
+  imports: [CommonModule, ProgressBarComponent, LoaderComponent, ButtonComponent, DiceDialogComponent, HelpDialogComponent],
   templateUrl: './room.component.html',
   styleUrl: './room.component.scss'
 })
@@ -31,6 +32,7 @@ export class RoomComponent {
   isPlayer: boolean = false
 
   @ViewChild(DiceDialogComponent) diceDialog!: DiceDialogComponent
+  @ViewChild(HelpDialogComponent) helpDialog!: HelpDialogComponent
 
   characters = [
     { nome: 'Hacker Ético', slug: 'hacker', id: 1 },

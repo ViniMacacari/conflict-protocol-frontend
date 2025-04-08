@@ -1,0 +1,131 @@
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 99998;
+
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+}
+
+.modal.fade-out {
+    opacity: 0;
+}
+
+.modal-dialog {
+    z-index: 99999;
+}
+
+.modal-content {
+    width: 350px;
+    border-radius: 25px;
+    transform: scale(1);
+    transition: transform 200ms ease, opacity 200ms ease;
+    background-color: #140419;
+}
+
+.modal.fade-out .modal-content {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 20px;
+
+    background-color: #140419;
+    border-radius: 25px;
+}
+
+@keyframes rotateIntermittent {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    40% {
+        transform: rotate(360deg);
+    }
+
+    50% {
+        transform: rotate(360deg);
+    }
+
+    90% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.seven-logo {
+    transform: rotate(0);
+    animation: rotateIntermittent 5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    transform-origin: center;
+}
+
+.loader {
+    height: 2px;
+    width: 100%;
+    background: rgb(44, 44, 44);
+    position: relative;
+    overflow: hidden;
+}
+
+.loader .black_overlay {
+    background: linear-gradient(87deg,
+            rgb(0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.14) 30%,
+            rgba(0, 0, 0, 0.14) 70%,
+            rgb(0, 0, 0) 100%);
+    position: absolute;
+    inset: 0px;
+}
+
+.loader .light {
+    width: 70px;
+    height: 100%;
+    position: absolute;
+    left: -20%;
+    top: 0px;
+    background: linear-gradient(87deg,
+            rgba(119, 47, 141, 0) 0%,
+            rgb(173, 118, 203) 40%,
+            rgb(184, 129, 210) 60%,
+            rgba(38, 7, 41, 1) 100%);
+    animation: light 2s infinite ease-in-out;
+}
+
+@keyframes light {
+    from {
+        left: -10%;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+.icons-duo {
+    font-size: 60px;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    max-height: 400px;
+    box-sizing: border-box;
+
+    color: #694276;
+}
