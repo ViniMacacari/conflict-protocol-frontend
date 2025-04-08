@@ -1,6 +1,9 @@
 <div class="d-flex align-items-center justify-content-center pt-4 flex-column">
     <h1 class="title mt-2">Crie uma partida</h1>
-    <h2 class="subtitle text-center px-5 mb-5">Reuna seus amigos!</h2>
+    <div class="d-flex align-items-center justify-content-center px-5 mb-5 gap-2">
+        <i class="fa-solid fa-left icons pointer" (click)="navigate('')"></i>
+        <h2 class="subtitle text-center mb-0">Reuna seus amigos!</h2>
+    </div>
 
     <app-input [label]="'CRIADOR DA SALA'" [placeholder]="'SEU APELIDO'" [icon]="'fa-user'"
         [(model)]="userName"></app-input>

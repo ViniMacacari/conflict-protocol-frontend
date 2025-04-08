@@ -61,4 +61,8 @@ export class EnterRoomComponent {
       this.loader = false
     }
   }
+
+  navigate(url: string): void {
+    this.router.navigate([url])
+  }
 }

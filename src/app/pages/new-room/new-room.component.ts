@@ -55,4 +55,8 @@ export class NewRoomComponent {
       this.loader = false
     }
   }
+
+  navigate(url: string): void {
+    this.router.navigate([url])
+  }
 }
