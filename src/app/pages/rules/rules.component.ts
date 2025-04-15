@@ -71,7 +71,7 @@ Duração média da partida: 20 a 50 minutos (pode variar).
 Use o QR Code incluso na caixa para acessar o site oficial, onde você encontrará:
 - Regras atualizadas
 - Rolador de dados digitais (D2 a D20)
-- Medidor de Vida
+- Controlador de turnos
 
 9. Criado por: Hugo, Leonardo, Vidal e Vinícius
 `
