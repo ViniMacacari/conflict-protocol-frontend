@@ -128,9 +128,9 @@ p {
     margin: 15px 0;
 
     button {
-        background: #3a2070;
+        background: #06030d;
         color: white;
-        font-size: 1.8em;
+        font-size: 1.3em;
         width: 40px;
         height: 40px;
         border: none;
@@ -138,6 +138,7 @@ p {
         margin: 0 15px;
         cursor: pointer;
         transition: background 0.2s;
+        font-family: 'Knight';
 
         &:hover {
             background: #4d145a;
@@ -150,6 +151,7 @@ p {
         color: white;
         width: 60px;
         text-align: center;
+        font-family: 'Knight';
     }
 }
 
@@ -168,9 +170,10 @@ p {
     max-height: 200px;
     overflow-y: auto;
     margin-bottom: 15px;
+    font-family: 'Knight';
 
     .target {
-        background: #2a2a2a;
+        background: #0b0210;
         border-radius: 8px;
         padding: 10px 15px;
         margin: 5px 0;
@@ -180,13 +183,14 @@ p {
         display: flex;
         justify-content: space-between;
         transition: background 0.2s;
+        font-family: 'Knight';
 
         &.selected {
             background: #5f1c73;
         }
 
         &:hover {
-            background: #3e3e3e;
+            background: #310a37;
         }
     }
 }

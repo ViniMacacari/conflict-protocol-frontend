@@ -78,6 +78,12 @@ export class RoomComponent {
             this.cdr.detectChanges()
             this.remainingTime = data.tempo_restante
             this.lastPlayerId = data.id_jogador_atual
+
+
+            if (this.actionModal) {
+              this.actionModal = false
+              this.cdr.detectChanges()
+            }
           }
 
           this.isPlayer = data.id_jogador_atual == this.userId

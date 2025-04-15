@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common'
 import { ButtonComponent } from '../button/button.component'
 import { RequestService } from '../../services/request/request.service'
 import { ChangeDetectorRef } from '@angular/core'
+import { LoaderComponent } from "../loader/loader.component"
 
 @Component({
   selector: 'app-life-dialog',
   standalone: true,
-  imports: [ButtonComponent, CommonModule],
+  imports: [ButtonComponent, CommonModule, LoaderComponent],
   templateUrl: './life-dialog.component.html',
   styleUrl: './life-dialog.component.scss'
 })
@@ -20,9 +21,11 @@ export class LifeDialogComponent {
 
   domElement: boolean = false
   animation: boolean = false
-  value: number = 0
+  value: number = 20
   selectedId: number | null = null
   players: { id: number, nome: string, vida: number }[] = []
+
+  loader: boolean = false
 
   constructor(
     private request: RequestService,
@@ -31,7 +34,7 @@ export class LifeDialogComponent {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['open'] && this.open) {
-      this.value = 0
+      this.value = 20
       this.selectedId = null
       this.domElement = true
       setTimeout(() => {
@@ -50,6 +53,7 @@ export class LifeDialogComponent {
 
   async fetchPlayers(): Promise<void> {
     try {
+      this.loader = true
       const response = await this.request.get(`/room/life-status/${this.roomCode}`)
       this.players = response.map((p: any) => ({
         id: Number(p.id_usuario),
@@ -60,6 +64,8 @@ export class LifeDialogComponent {
     } catch (err) {
       alert('Erro ao buscar jogadores.')
       console.error('Erro ao buscar jogadores:', err)
+    } finally {
+      this.loader = false
     }
   }
 
@@ -86,10 +92,13 @@ export class LifeDialogComponent {
         : { roomCode: this.roomCode, targetId: this.selectedId, amount: this.value }
 
     try {
+      this.loader = true
       await this.request.post(endpoint, payload)
     } catch (err) {
       alert('Erro ao executar ação.')
       console.error('Erro ao executar ação:', err)
+    } finally {
+      this.loader = false
     }
 
     this.close()
