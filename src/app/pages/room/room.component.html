@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center justify-content-center pt-4 flex-column">
-    <div class="d-flex align-items-center justify-content-center flex-row gap-2">
+    <div class="d-flex align-items-center justify-content-center flex-row gap-2 px-1">
         <i class="fa-solid fa-circle-question icons pointer" (click)="helpDialog.openHelp()"></i>
-        <h1 class="title-1 mt-2">Jogador da rodada [{{roomCode}}]:</h1>
+        <h1 class="title-1 mt-2">{{ isPlayer ? 'Sua vez de jogar!' : 'Jogador da rodada' }} [{{roomCode}}]:</h1>
     </div>
     <app-progress-bar *ngIf="currentPlayerName && currentPlayerCharacter"
         [durationInSeconds]="remainingTime"></app-progress-bar>
@@ -21,7 +21,7 @@
                 </p>
             </div>
 
-            <app-progress-bar *ngIf="maxCurrentLife > 0" [fixedProgress]="currentLife" [fixedMax]="maxCurrentLife">
+            <app-progress-bar class="w-100" *ngIf="maxCurrentLife > 0" [fixedProgress]="currentLife" [fixedMax]="maxCurrentLife">
             </app-progress-bar>
         </div>
 
