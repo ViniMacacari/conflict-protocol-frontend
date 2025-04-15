@@ -16,6 +16,9 @@
             <div class="player-name">
                 <p>{{ currentPlayerName }}</p>
             </div>
+
+            <app-progress-bar *ngIf="maxCurrentLife > 0" [fixedProgress]="currentLife" [fixedMax]="maxCurrentLife">
+            </app-progress-bar>
         </div>
 
         <div *ngIf="this.isPlayer" class="match-data">
@@ -64,4 +67,5 @@
 <app-loader [open]=" loader" [text]="'Buscando informações...'"></app-loader>
 <app-dice-dialog [number]="diceNum"></app-dice-dialog>
 <app-help-dialog></app-help-dialog>
-<app-life-dialog [open]="actionModal" [action]="action" [roomCode]="roomCode" (closeDialog)="actionModal = false"></app-life-dialog>
+<app-life-dialog [open]="actionModal" [action]="action" [roomCode]="roomCode"
+    (closeDialog)="actionModal = false"></app-life-dialog>

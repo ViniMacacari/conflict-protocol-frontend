@@ -24,6 +24,8 @@ export class RoomComponent {
   remainingTime: number = 0
   userId: number = 0
   character: string = ''
+  currentLife: number = 0
+  maxCurrentLife: number = 0
 
   actionModal: boolean = false
   action: 0 | 1 = 0
@@ -67,6 +69,8 @@ export class RoomComponent {
         (data) => {
           this.character = data.personagem
           this.currentPlayerName = data.nome_jogador
+          this.currentLife = data.vida
+          this.maxCurrentLife = data.vida_maxima
 
           const character = this.characters.find(c => c.nome === data.personagem)
           this.currentPlayerCharacter = character?.slug || ''
