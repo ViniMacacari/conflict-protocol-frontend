@@ -1,0 +1,29 @@
+<div *ngIf="domElement" class="modal fade" tabindex="-1" [ngClass]="{ 'show': animation, 'fade-out': !animation }"
+    style="display: flex" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p class="mt-3 blue">{{ action === 0 ? 'ATAQUE' : 'CURA' }}</p>
+
+                <div class="target-list">
+                    <div *ngFor="let player of players; trackBy: trackById" class="target"
+                        [class.selected]="player.id === selectedId" (click)="selectPlayer(player.id)">
+                        <strong>{{ player.nome }}</strong>
+                        <span>{{ player.vida }}</span>
+                    </div>
+                </div>
+
+                <div class="counter">
+                    <button (click)="decrease()">−</button>
+                    <span>{{ value }}</span>
+                    <button (click)="increase()">+</button>
+                </div>
+
+                <div class="buttons">
+                    <app-button [text]="'CONFIRMAR'" (click)="confirm()"></app-button>
+                    <app-button [text]="'CANCELAR'" (click)="close()"></app-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

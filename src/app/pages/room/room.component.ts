@@ -6,12 +6,13 @@ import { ProgressBarComponent } from "../../components/progress-bar/progress-bar
 import { LoaderComponent } from "../../components/loader/loader.component"
 import { ButtonComponent } from "../../components/button/button.component"
 import { DiceDialogComponent } from "../../components/dice-dialog/dice-dialog.component"
-import { HelpDialogComponent } from "../../components/help-dialog/help-dialog.component";
+import { HelpDialogComponent } from "../../components/help-dialog/help-dialog.component"
+import { LifeDialogComponent } from "../../components/life-dialog/life-dialog.component"
 
 @Component({
   selector: 'app-room',
   standalone: true,
-  imports: [CommonModule, ProgressBarComponent, LoaderComponent, ButtonComponent, DiceDialogComponent, HelpDialogComponent],
+  imports: [CommonModule, ProgressBarComponent, LoaderComponent, ButtonComponent, DiceDialogComponent, HelpDialogComponent, LifeDialogComponent],
   templateUrl: './room.component.html',
   styleUrl: './room.component.scss'
 })
@@ -23,6 +24,9 @@ export class RoomComponent {
   remainingTime: number = 0
   userId: number = 0
   character: string = ''
+
+  actionModal: boolean = false
+  action: 0 | 1 = 0
 
   next: boolean = false
 

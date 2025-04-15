@@ -46,6 +46,17 @@
                     <i class="fa-duotone fa-solid fa-dice-d20 icons-duo"></i>
                 </div>
             </div>
+            <h2>OU</h2>
+            <div class="action d-flex gap-2">
+                <div class="action-box" (click)="actionModal = true; action = 0">
+                    <p class="mb-0">Dano</p>
+                    <i class="fa-duotone fa-solid fa-sword icons-duo"></i>
+                </div>
+                <div class="action-box" (click)="actionModal = true; action = 1">
+                    <p class="mb-0">Vida</p>
+                    <i class="fa-duotone fa-solid fa-heart-pulse icons-duo"></i>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -53,3 +64,4 @@
 <app-loader [open]=" loader" [text]="'Buscando informações...'"></app-loader>
 <app-dice-dialog [number]="diceNum"></app-dice-dialog>
 <app-help-dialog></app-help-dialog>
+<app-life-dialog [open]="actionModal" [action]="action" [roomCode]="roomCode" (closeDialog)="actionModal = false"></app-life-dialog>

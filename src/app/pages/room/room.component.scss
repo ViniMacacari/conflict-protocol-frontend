@@ -125,3 +125,25 @@
         background-color: #060008;
     }
 }
+
+.action-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 10px;
+    background-color: #1d0224;
+
+    cursor: pointer;
+
+    transition: 0.3s ease-in;
+
+    &:hover {
+        background-color: #060008;
+    }
+}
