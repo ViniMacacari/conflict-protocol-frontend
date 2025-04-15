@@ -17,11 +17,16 @@
                 <p>{{ currentPlayerName }}</p>
                 <p class="d-flex align-items-center gap-2">
                     <i class="fa-solid fa-heart-pulse icons-duo"></i>
-                    {{ currentLife }} / {{ maxCurrentLife }}
+                    <span [ngClass]="{ 'bonus-life': currentLife > maxCurrentLife }">
+                        {{ currentLife }}
+                    </span>
+                    /
+                    <span>{{ maxCurrentLife }}</span>
                 </p>
             </div>
 
-            <app-progress-bar class="w-100" *ngIf="maxCurrentLife > 0" [fixedProgress]="currentLife" [fixedMax]="maxCurrentLife">
+            <app-progress-bar class="w-100" *ngIf="maxCurrentLife > 0" [fixedProgress]="currentLife"
+                [fixedMax]="maxCurrentLife">
             </app-progress-bar>
         </div>
 
